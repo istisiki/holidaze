@@ -86,9 +86,15 @@ function App() {
         />
       )}
 
-      <footer className="app__footer">
+      <div className="app__status">
         <p className="app__holiday-count">
           {holidays.length} holiday{holidays.length !== 1 ? "s" : ""} marked
+        </p>
+      </div>
+      <footer className="app__footer">
+        <p>
+          &copy; 2026 Holidaze •{" "}
+          <a href="https://github.com/istisiki">istisiki</a> •
         </p>
       </footer>
     </div>
