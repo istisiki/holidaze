@@ -110,7 +110,7 @@ function App() {
       </div>
       <footer className="app__footer">
         <p>
-          &copy; 2026 Holidaze •{" "}
+          &copy; 2026 Holidaze • Made with ❤️ by{" "}
           <a href="https://github.com/istisiki">istisiki</a> •
         </p>
       </footer>
