@@ -3,6 +3,9 @@
   align-items: center;
   gap: 16px;
   padding: 12px 0;
+  /* Fix for html2canvas text spacing issues in PDF export */
+  letter-spacing: 0.01em;
+  word-spacing: 0.05em;
 }
 
 .legend__title {
