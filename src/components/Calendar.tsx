@@ -9,10 +9,11 @@ interface CalendarProps {
   year: number;
   holidays: Holiday[];
   onRemoveHoliday?: (date: string) => void;
+  onAddHoliday?: (date: string) => void;
 }
 
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
-  function Calendar({ year, holidays, onRemoveHoliday }, ref) {
+  function Calendar({ year, holidays, onRemoveHoliday, onAddHoliday }, ref) {
     const months = Array.from({ length: 12 }, (_, i) => i);
 
     // Create day headers (1-31)
@@ -40,6 +41,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               month={month}
               holidays={holidays}
               onRemoveHoliday={onRemoveHoliday}
+              onAddHoliday={onAddHoliday}
             />
           ))}
         </div>

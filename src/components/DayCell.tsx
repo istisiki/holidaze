@@ -4,13 +4,15 @@ import './DayCell.css';
 
 interface DayCellProps {
   day: number;
+  date: string;
   isValid: boolean;
   isWeekend: boolean;
   holiday: Holiday | undefined;
   onRemove?: (date: string) => void;
+  onAddHoliday?: (date: string) => void;
 }
 
-export function DayCell({ day, isValid, isWeekend, holiday, onRemove }: DayCellProps) {
+export function DayCell({ day, date, isValid, isWeekend, holiday, onRemove, onAddHoliday }: DayCellProps) {
   const [showTooltip, setShowTooltip] = useState(false);
 
   if (!isValid) {
@@ -20,10 +22,12 @@ export function DayCell({ day, isValid, isWeekend, holiday, onRemove }: DayCellP
   const handleClick = () => {
     if (holiday && onRemove) {
       onRemove(holiday.date);
+    } else if (!holiday && onAddHoliday) {
+      onAddHoliday(date);
     }
   };
 
-  const classNames = ['day-cell'];
+  const classNames = ['day-cell', 'day-cell--clickable'];
   if (isWeekend) classNames.push('day-cell--weekend');
   if (holiday) classNames.push('day-cell--holiday');
 

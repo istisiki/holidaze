@@ -8,9 +8,10 @@ interface MonthRowProps {
   month: number; // 0-indexed
   holidays: Holiday[];
   onRemoveHoliday?: (date: string) => void;
+  onAddHoliday?: (date: string) => void;
 }
 
-export function MonthRow({ year, month, holidays, onRemoveHoliday }: MonthRowProps) {
+export function MonthRow({ year, month, holidays, onRemoveHoliday, onAddHoliday }: MonthRowProps) {
   const daysInMonth = getDaysInMonth(year, month);
   const monthName = getMonthName(month);
   const MAX_DAYS = 31;
@@ -34,10 +35,12 @@ export function MonthRow({ year, month, holidays, onRemoveHoliday }: MonthRowPro
       <DayCell
         key={day}
         day={day}
+        date={dateStr}
         isValid={isValid}
         isWeekend={isWeekend}
         holiday={holiday}
         onRemove={onRemoveHoliday}
+        onAddHoliday={onAddHoliday}
       />
     );
   }

@@ -1,0 +1,87 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  min-width: 320px;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal__title {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.modal__date {
+  margin: 0 0 16px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.modal__input:focus {
+  outline: none;
+  border-color: #197278;
+  box-shadow: 0 0 0 2px rgba(25, 114, 120, 0.2);
+}
+
+.modal__buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.modal__button {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal__button--cancel {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.modal__button--cancel:hover {
+  background-color: #d0d0d0;
+}
+
+.modal__button--save {
+  background-color: #197278;
+  color: white;
+}
+
+.modal__button--save:hover:not(:disabled) {
+  background-color: #145a5f;
+}
+
+.modal__button--save:disabled {
+  background-color: #b0b0b0;
+  cursor: not-allowed;
+}
