@@ -16,7 +16,25 @@ export function ShareButton({ holidays }: ShareButtonProps) {
     const url = generateShareUrl(holidays);
 
     try {
-      await navigator.clipboard.writeText(url);
+      // Try modern clipboard API first
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        // Fallback for browsers without clipboard API (Firefox in non-secure context, etc.)
+        const textArea = document.createElement("textarea");
+        textArea.value = url;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        const success = document.execCommand("copy");
+        document.body.removeChild(textArea);
+        if (!success) {
+          throw new Error("execCommand copy failed");
+        }
+      }
       setCopyStatus("copied");
       setTimeout(() => setCopyStatus("idle"), 2000);
     } catch (error) {
