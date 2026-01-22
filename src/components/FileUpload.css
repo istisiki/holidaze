@@ -54,3 +54,22 @@
   color: #ff7043;
   font-weight: 500;
 }
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .file-upload {
+    padding: 12px;
+  }
+
+  .file-upload__dropzone {
+    padding: 16px;
+  }
+
+  .file-upload__text {
+    font-size: 13px;
+  }
+
+  .file-upload__format {
+    font-size: 11px;
+  }
+}

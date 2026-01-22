@@ -17,3 +17,10 @@
   background-color: #e5e5e5;
   color: #bbb;
 }
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .clear-all-button {
+    width: 100%;
+  }
+}

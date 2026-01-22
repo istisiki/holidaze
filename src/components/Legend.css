@@ -53,3 +53,33 @@
   font-size: 13px;
   color: #555;
 }
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .legend {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .legend__title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .legend__items {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+  }
+
+  .legend__label {
+    font-size: 12px;
+  }
+
+  .legend__color {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -52,3 +52,24 @@
   font-weight: 600;
   color: #666;
 }
+
+.calendar__mobile-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .calendar {
+    padding: 12px;
+  }
+
+  .calendar__header {
+    margin-bottom: 12px;
+  }
+
+  .calendar__year-title {
+    font-size: 18px;
+  }
+}

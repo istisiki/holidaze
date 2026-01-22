@@ -18,3 +18,10 @@
   background-color: #a5d6a7;
   cursor: not-allowed;
 }
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .export-button {
+    width: 100%;
+  }
+}

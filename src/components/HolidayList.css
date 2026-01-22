@@ -41,3 +41,15 @@
 .holiday-list__description {
   color: #555;
 }
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .holiday-list__items {
+    grid-template-columns: 1fr;
+  }
+
+  .holiday-list__item {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

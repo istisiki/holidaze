@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import type { Holiday } from "../types/holiday";
 import "./DayCell.css";
 
@@ -25,17 +25,33 @@ export function DayCell({
 }: DayCellProps) {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  if (!isValid) {
-    return <div className="day-cell day-cell--invalid" />;
-  }
+  // Auto-hide tooltip on mobile after 2 seconds
+  useEffect(() => {
+    if (showTooltip && holiday) {
+      const timer = setTimeout(() => {
+        setShowTooltip(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showTooltip, holiday]);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (holiday && onRemove) {
       onRemove(holiday.date);
     } else if (!holiday && onAddHoliday) {
       onAddHoliday(date);
     }
-  };
+  }, [holiday, onRemove, onAddHoliday, date]);
+
+  const handleTouchStart = useCallback(() => {
+    if (holiday) {
+      setShowTooltip(true);
+    }
+  }, [holiday]);
+
+  if (!isValid) {
+    return <div className="day-cell day-cell--invalid" />;
+  }
 
   const classNames = ["day-cell", "day-cell--clickable"];
   if (isWeekend) classNames.push("day-cell--weekend");
@@ -47,6 +63,7 @@ export function DayCell({
       className={classNames.join(" ")}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
+      onTouchStart={handleTouchStart}
       onClick={handleClick}
       title={holiday?.description}
     >

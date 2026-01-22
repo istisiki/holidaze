@@ -20,3 +20,12 @@
   background-color: #90caf9;
   cursor: not-allowed;
 }
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .share-button {
+    width: 100%;
+    min-width: auto;
+    max-width: none;
+  }
+}
