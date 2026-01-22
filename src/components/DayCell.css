@@ -16,10 +16,6 @@
   border-color: #eee;
 }
 
-.day-cell--weekend {
-  background-color: #b6d6cc;
-}
-
 .day-cell--holiday {
   background-color: #197278;
   color: white;
@@ -29,6 +25,12 @@
 
 .day-cell--holiday:hover {
   background-color: #f4511e;
+}
+
+.day-cell--weekend {
+  background-color: #b6d6cc;
+  color: inherit;
+  font-weight: normal;
 }
 
 .day-cell--clickable {
