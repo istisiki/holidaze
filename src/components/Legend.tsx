@@ -17,6 +17,10 @@ export function Legend() {
           <div className="legend__color legend__color--weekday" />
           <span className="legend__label">Weekday</span>
         </div>
+        <div className="legend__item">
+          <div className="legend__color legend__color--today" />
+          <span className="legend__label">Today</span>
+        </div>
       </div>
     </div>
   );

@@ -41,6 +41,11 @@
   background-color: #fff;
 }
 
+.legend__color--today {
+  background-color: #bb443044;
+  border: 1px solid #bb4430;
+}
+
 .legend__label {
   font-size: 13px;
   color: #555;
