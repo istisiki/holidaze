@@ -11,10 +11,20 @@ import { ClearAllButton } from "./components/ClearAll";
 
 const CURRENT_YEAR = 2026;
 
+function getTodayDateString(): string {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function App() {
   const calendarRef = useRef<HTMLDivElement>(null);
   const { holidays, addHoliday, removeHoliday, importHolidays, clearAll } =
     useHolidays();
+  const todayDateString = getTodayDateString();
+  const isTodayHoliday = holidays.some((h) => h.date === todayDateString);
   const [selectedDateForAdd, setSelectedDateForAdd] = useState<string | null>(
     null,
   );
@@ -46,7 +56,13 @@ function App() {
     <div className="app">
       <header className="app__header">
         <h1 className="app__title">Holidaze</h1>
-        <p className="app__subtitle">Holiday Calendar Visualizer</p>
+        <p
+          className={`app__subtitle app__#{isTodayHoliday ? "holiday" : "not-holiday"}`}
+        >
+          {isTodayHoliday
+            ? "🎉 YES!!! It's a holiday. Uninstall Slack, relax, and chill out. 🎉"
+            : "😢 Boo hoo! You have to work today. 😢"}
+        </p>
       </header>
 
       <div className="app__controls">
@@ -73,6 +89,7 @@ function App() {
           ref={calendarRef}
           year={CURRENT_YEAR}
           holidays={holidays}
+          todayDateString={todayDateString}
           onRemoveHoliday={removeHoliday}
           onAddHoliday={handleAddHolidayClick}
         />

@@ -11,6 +11,7 @@ interface MonthRowProps {
   year: number;
   month: number; // 0-indexed
   holidays: Holiday[];
+  todayDateString?: string;
   onRemoveHoliday?: (date: string) => void;
   onAddHoliday?: (date: string) => void;
 }
@@ -19,6 +20,7 @@ export function MonthRow({
   year,
   month,
   holidays,
+  todayDateString,
   onRemoveHoliday,
   onAddHoliday,
 }: MonthRowProps) {
@@ -48,6 +50,7 @@ export function MonthRow({
         date={dateStr}
         isValid={isValid}
         isWeekend={isWeekend}
+        isToday={isValid && dateStr === todayDateString}
         holiday={holiday}
         onRemove={onRemoveHoliday}
         onAddHoliday={onAddHoliday}

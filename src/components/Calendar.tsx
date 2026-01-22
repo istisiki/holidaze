@@ -8,12 +8,13 @@ import "./Calendar.css";
 interface CalendarProps {
   year: number;
   holidays: Holiday[];
+  todayDateString?: string;
   onRemoveHoliday?: (date: string) => void;
   onAddHoliday?: (date: string) => void;
 }
 
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
-  function Calendar({ year, holidays, onRemoveHoliday, onAddHoliday }, ref) {
+  function Calendar({ year, holidays, todayDateString, onRemoveHoliday, onAddHoliday }, ref) {
     const months = Array.from({ length: 12 }, (_, i) => i);
 
     // Create day headers (1-31)
@@ -40,6 +41,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               year={year}
               month={month}
               holidays={holidays}
+              todayDateString={todayDateString}
               onRemoveHoliday={onRemoveHoliday}
               onAddHoliday={onAddHoliday}
             />

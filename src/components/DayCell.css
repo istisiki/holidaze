@@ -16,11 +16,18 @@
   border-color: #eee;
 }
 
+.day-cell--today {
+  border: 1px solid #bb4430;
+  background-color: #bb443044;
+  color: #bb4430;
+}
+
 .day-cell--holiday {
   background-color: #197278;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  border-width: 3px;
 }
 
 .day-cell--holiday:hover {

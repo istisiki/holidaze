@@ -7,6 +7,7 @@ interface DayCellProps {
   date: string;
   isValid: boolean;
   isWeekend: boolean;
+  isToday: boolean;
   holiday: Holiday | undefined;
   onRemove?: (date: string) => void;
   onAddHoliday?: (date: string) => void;
@@ -17,6 +18,7 @@ export function DayCell({
   date,
   isValid,
   isWeekend,
+  isToday,
   holiday,
   onRemove,
   onAddHoliday,
@@ -38,6 +40,7 @@ export function DayCell({
   const classNames = ["day-cell", "day-cell--clickable"];
   if (isWeekend) classNames.push("day-cell--weekend");
   if (holiday) classNames.push("day-cell--holiday");
+  if (isToday) classNames.push("day-cell--today");
 
   return (
     <div
