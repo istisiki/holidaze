@@ -1,0 +1,90 @@
+.app {
+  min-height: 100vh;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app__header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.app__title {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+}
+
+.app__subtitle {
+  margin: 4px 0 0 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.app__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+
+.app__input-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  flex: 1;
+}
+
+.app__input-section > * {
+  flex: 1;
+  min-width: 280px;
+}
+
+.app__actions {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.app__clear-button {
+  padding: 12px 24px;
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.app__clear-button:hover {
+  background-color: #d0d0d0;
+}
+
+.app__main {
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+.app__footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.app__holiday-count {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.app__hint {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: #999;
+}

@@ -1,0 +1,19 @@
+.month-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.month-row__label {
+  width: 90px;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: right;
+  padding-right: 8px;
+  color: #333;
+}
+
+.month-row__days {
+  display: flex;
+  gap: 2px;
+}
