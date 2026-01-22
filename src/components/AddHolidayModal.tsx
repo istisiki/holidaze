@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import './AddHolidayModal.css';
+import { useState, useEffect, useRef } from "react";
+import "./AddHolidayModal.css";
 
 interface AddHolidayModalProps {
   date: string;
@@ -7,8 +7,12 @@ interface AddHolidayModalProps {
   onCancel: () => void;
 }
 
-export function AddHolidayModal({ date, onSave, onCancel }: AddHolidayModalProps) {
-  const [description, setDescription] = useState('');
+export function AddHolidayModal({
+  date,
+  onSave,
+  onCancel,
+}: AddHolidayModalProps) {
+  const [description, setDescription] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -23,19 +27,19 @@ export function AddHolidayModal({ date, onSave, onCancel }: AddHolidayModalProps
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       onCancel();
     }
   };
 
   const formatDisplayDate = (dateStr: string) => {
-    const [year, month, day] = dateStr.split('-');
+    const [year, month, day] = dateStr.split("-");
     const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-    return date.toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -58,7 +62,11 @@ export function AddHolidayModal({ date, onSave, onCancel }: AddHolidayModalProps
             onChange={(e) => setDescription(e.target.value)}
           />
           <div className="modal__buttons">
-            <button type="button" className="modal__button modal__button--cancel" onClick={onCancel}>
+            <button
+              type="button"
+              className="modal__button modal__button--cancel"
+              onClick={onCancel}
+            >
               Cancel
             </button>
             <button

@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import type { Holiday } from '../types/holiday';
+import { useState, useCallback } from "react";
+import type { Holiday } from "../types/holiday";
 
 export interface UseHolidaysReturn {
   holidays: Holiday[];
@@ -14,9 +14,9 @@ export function useHolidays(): UseHolidaysReturn {
   const [holidays, setHolidays] = useState<Holiday[]>([]);
 
   const addHoliday = useCallback((holiday: Holiday) => {
-    setHolidays(prev => {
+    setHolidays((prev) => {
       // Replace if same date exists, otherwise add
-      const existing = prev.findIndex(h => h.date === holiday.date);
+      const existing = prev.findIndex((h) => h.date === holiday.date);
       if (existing >= 0) {
         const updated = [...prev];
         updated[existing] = holiday;
@@ -27,11 +27,11 @@ export function useHolidays(): UseHolidaysReturn {
   }, []);
 
   const removeHoliday = useCallback((date: string) => {
-    setHolidays(prev => prev.filter(h => h.date !== date));
+    setHolidays((prev) => prev.filter((h) => h.date !== date));
   }, []);
 
   const importHolidays = useCallback((newHolidays: Holiday[]) => {
-    setHolidays(prev => {
+    setHolidays((prev) => {
       const map = new Map<string, Holiday>();
       // Add existing holidays
       for (const h of prev) {
@@ -49,9 +49,12 @@ export function useHolidays(): UseHolidaysReturn {
     setHolidays([]);
   }, []);
 
-  const getHolidayByDate = useCallback((date: string): Holiday | undefined => {
-    return holidays.find(h => h.date === date);
-  }, [holidays]);
+  const getHolidayByDate = useCallback(
+    (date: string): Holiday | undefined => {
+      return holidays.find((h) => h.date === date);
+    },
+    [holidays],
+  );
 
   return {
     holidays,
@@ -59,6 +62,6 @@ export function useHolidays(): UseHolidaysReturn {
     removeHoliday,
     importHolidays,
     clearAll,
-    getHolidayByDate
+    getHolidayByDate,
   };
 }

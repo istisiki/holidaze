@@ -1,7 +1,11 @@
-import { DayCell } from './DayCell';
-import { getMonthName, getDaysInMonth, formatDate } from '../utils/calendarUtils';
-import type { Holiday } from '../types/holiday';
-import './MonthRow.css';
+import { DayCell } from "./DayCell";
+import {
+  getMonthName,
+  getDaysInMonth,
+  formatDate,
+} from "../utils/calendarUtils";
+import type { Holiday } from "../types/holiday";
+import "./MonthRow.css";
 
 interface MonthRowProps {
   year: number;
@@ -11,7 +15,13 @@ interface MonthRowProps {
   onAddHoliday?: (date: string) => void;
 }
 
-export function MonthRow({ year, month, holidays, onRemoveHoliday, onAddHoliday }: MonthRowProps) {
+export function MonthRow({
+  year,
+  month,
+  holidays,
+  onRemoveHoliday,
+  onAddHoliday,
+}: MonthRowProps) {
   const daysInMonth = getDaysInMonth(year, month);
   const monthName = getMonthName(month);
   const MAX_DAYS = 31;
@@ -41,7 +51,7 @@ export function MonthRow({ year, month, holidays, onRemoveHoliday, onAddHoliday 
         holiday={holiday}
         onRemove={onRemoveHoliday}
         onAddHoliday={onAddHoliday}
-      />
+      />,
     );
   }
 

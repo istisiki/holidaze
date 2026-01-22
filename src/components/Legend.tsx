@@ -1,4 +1,4 @@
-import './Legend.css';
+import "./Legend.css";
 
 export function Legend() {
   return (

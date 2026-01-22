@@ -1,9 +1,9 @@
-import { forwardRef } from 'react';
-import { MonthRow } from './MonthRow';
-import { Legend } from './Legend';
-import { HolidayList } from './HolidayList';
-import type { Holiday } from '../types/holiday';
-import './Calendar.css';
+import { forwardRef } from "react";
+import { MonthRow } from "./MonthRow";
+import { Legend } from "./Legend";
+import { HolidayList } from "./HolidayList";
+import type { Holiday } from "../types/holiday";
+import "./Calendar.css";
 
 interface CalendarProps {
   year: number;
@@ -34,7 +34,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
             <div className="calendar__month-spacer" />
             <div className="calendar__day-header-row">{dayHeaders}</div>
           </div>
-          {months.map(month => (
+          {months.map((month) => (
             <MonthRow
               key={month}
               year={year}
@@ -48,5 +48,5 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         <HolidayList holidays={holidays} />
       </div>
     );
-  }
+  },
 );

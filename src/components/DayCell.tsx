@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import type { Holiday } from '../types/holiday';
-import './DayCell.css';
+import { useState } from "react";
+import type { Holiday } from "../types/holiday";
+import "./DayCell.css";
 
 interface DayCellProps {
   day: number;
@@ -12,7 +12,15 @@ interface DayCellProps {
   onAddHoliday?: (date: string) => void;
 }
 
-export function DayCell({ day, date, isValid, isWeekend, holiday, onRemove, onAddHoliday }: DayCellProps) {
+export function DayCell({
+  day,
+  date,
+  isValid,
+  isWeekend,
+  holiday,
+  onRemove,
+  onAddHoliday,
+}: DayCellProps) {
   const [showTooltip, setShowTooltip] = useState(false);
 
   if (!isValid) {
@@ -27,13 +35,13 @@ export function DayCell({ day, date, isValid, isWeekend, holiday, onRemove, onAd
     }
   };
 
-  const classNames = ['day-cell', 'day-cell--clickable'];
-  if (isWeekend) classNames.push('day-cell--weekend');
-  if (holiday) classNames.push('day-cell--holiday');
+  const classNames = ["day-cell", "day-cell--clickable"];
+  if (isWeekend) classNames.push("day-cell--weekend");
+  if (holiday) classNames.push("day-cell--holiday");
 
   return (
     <div
-      className={classNames.join(' ')}
+      className={classNames.join(" ")}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
       onClick={handleClick}
@@ -41,9 +49,7 @@ export function DayCell({ day, date, isValid, isWeekend, holiday, onRemove, onAd
     >
       <span className="day-cell__number">{day}</span>
       {holiday && showTooltip && (
-        <div className="day-cell__tooltip">
-          {holiday.description}
-        </div>
+        <div className="day-cell__tooltip">{holiday.description}</div>
       )}
     </div>
   );

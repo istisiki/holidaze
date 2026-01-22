@@ -1,7 +1,7 @@
-import type { Holiday } from '../types/holiday';
+import type { Holiday } from "../types/holiday";
 
 export function parseHolidayFile(content: string): Holiday[] {
-  const lines = content.split('\n');
+  const lines = content.split("\n");
   const holidays: Holiday[] = [];
 
   for (const line of lines) {

@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import type { Holiday } from '../types/holiday';
-import { generateShareUrl } from '../utils/urlShare';
-import './ShareButton.css';
+import { useState } from "react";
+import type { Holiday } from "../types/holiday";
+import { generateShareUrl } from "../utils/urlShare";
+import "./ShareButton.css";
 
 interface ShareButtonProps {
   holidays: Holiday[];
 }
 
 export function ShareButton({ holidays }: ShareButtonProps) {
-  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'error'>(
-    'idle'
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">(
+    "idle",
   );
 
   const handleShare = async () => {
@@ -17,12 +17,12 @@ export function ShareButton({ holidays }: ShareButtonProps) {
 
     try {
       await navigator.clipboard.writeText(url);
-      setCopyStatus('copied');
-      setTimeout(() => setCopyStatus('idle'), 2000);
+      setCopyStatus("copied");
+      setTimeout(() => setCopyStatus("idle"), 2000);
     } catch (error) {
-      console.error('Failed to copy URL:', error);
-      setCopyStatus('error');
-      setTimeout(() => setCopyStatus('idle'), 2000);
+      console.error("Failed to copy URL:", error);
+      setCopyStatus("error");
+      setTimeout(() => setCopyStatus("idle"), 2000);
     }
   };
 
@@ -33,13 +33,13 @@ export function ShareButton({ holidays }: ShareButtonProps) {
       className="share-button"
       onClick={handleShare}
       disabled={isDisabled}
-      title={isDisabled ? 'Add holidays to share' : 'Copy shareable link'}
+      title={isDisabled ? "Add holidays to share" : "Copy shareable link"}
     >
-      {copyStatus === 'copied'
-        ? 'Copied!'
-        : copyStatus === 'error'
-          ? 'Failed'
-          : 'Share'}
+      {copyStatus === "copied"
+        ? "Copied!"
+        : copyStatus === "error"
+          ? "Failed"
+          : "Share"}
     </button>
   );
 }

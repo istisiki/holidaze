@@ -8,6 +8,8 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
+  min-width: 95px;
+  max-width: 95px;
 }
 
 .share-button:hover:not(:disabled) {

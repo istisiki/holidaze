@@ -1,21 +1,21 @@
-import type { Holiday } from '../types/holiday';
+import type { Holiday } from "../types/holiday";
 
 /**
  * Encode holidays to a URL-safe string
  * Format: 2026-01-01:New+Year,2026-12-25:Christmas
  */
 export function encodeHolidays(holidays: Holiday[]): string {
-  if (holidays.length === 0) return '';
+  if (holidays.length === 0) return "";
 
   return holidays
     .map((h) => {
       const encodedDescription = encodeURIComponent(h.description).replace(
         /%20/g,
-        '+'
+        "+",
       );
       return `${h.date}:${encodedDescription}`;
     })
-    .join(',');
+    .join(",");
 }
 
 /**
@@ -25,20 +25,22 @@ export function decodeHolidays(encoded: string): Holiday[] {
   if (!encoded) return [];
 
   try {
-    return encoded.split(',').map((entry) => {
-      const colonIndex = entry.indexOf(':');
+    return encoded.split(",").map((entry) => {
+      const colonIndex = entry.indexOf(":");
       if (colonIndex === -1) {
         throw new Error(`Invalid holiday entry: ${entry}`);
       }
 
       const date = entry.substring(0, colonIndex);
       const encodedDescription = entry.substring(colonIndex + 1);
-      const description = decodeURIComponent(encodedDescription.replace(/\+/g, ' '));
+      const description = decodeURIComponent(
+        encodedDescription.replace(/\+/g, " "),
+      );
 
       return { date, description };
     });
   } catch (error) {
-    console.error('Failed to decode holidays from URL:', error);
+    console.error("Failed to decode holidays from URL:", error);
     return [];
   }
 }
@@ -60,7 +62,7 @@ export function generateShareUrl(holidays: Holiday[]): string {
  */
 export function getHolidaysFromUrl(): Holiday[] {
   const params = new URLSearchParams(window.location.search);
-  const holidaysParam = params.get('holidays');
+  const holidaysParam = params.get("holidays");
 
   if (!holidaysParam) return [];
 
@@ -72,6 +74,6 @@ export function getHolidaysFromUrl(): Holiday[] {
  */
 export function clearUrlHolidays(): void {
   const url = new URL(window.location.href);
-  url.searchParams.delete('holidays');
-  window.history.replaceState({}, '', url.toString());
+  url.searchParams.delete("holidays");
+  window.history.replaceState({}, "", url.toString());
 }
